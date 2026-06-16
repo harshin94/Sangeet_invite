@@ -674,11 +674,20 @@ document.getElementById('rsvp-form').addEventListener('submit',function(e){
   if(!n||!p||!g||!a)return;
   const btn=this.querySelector('.bs');
   btn.textContent='Sending...';btn.disabled=true;
-  setTimeout(()=>{
+  fetch('https://script.google.com/macros/s/AKfycbyOog4BYNE_vIJdMM_hmMQdMOf7SFFJnY_6D12NRALPBYqQ-vO4DLVMLQTk5h_2Uyvy/exec',{
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:n,phone:p,guests:g,attending:a})
+  }).then(()=>{
     this.querySelectorAll('input,select').forEach(el=>el.value='');
     document.getElementById('form-success').style.display='block';
     btn.textContent='Reserve My Spot';btn.disabled=false;
-  },1200);
+  }).catch(()=>{
+    this.querySelectorAll('input,select').forEach(el=>el.value='');
+    document.getElementById('form-success').style.display='block';
+    btn.textContent='Reserve My Spot';btn.disabled=false;
+  });
 });
 </script>
 </body>
