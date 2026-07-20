@@ -136,7 +136,8 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(248
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   touch-action:none;cursor:crosshair;transition:opacity 1s ease,visibility 1s;}
 #enter.gone{opacity:0;visibility:hidden;pointer-events:none;}
-#tent{width:min(92vw,660px);height:auto;display:block;}
+#tent{width:min(92vw,660px);height:auto;display:block;transition:opacity .7s ease,transform .7s ease;}
+#tent.fade{opacity:0;transform:scale(1.04);}
 .bulb{transition:opacity .35s ease,r .35s ease;}
 #enter-cap{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.42em;text-transform:uppercase;
   color:rgba(212,175,55,.75);margin-top:1.6rem;text-align:center;padding:0 1.5rem;
@@ -723,12 +724,13 @@ body.locked{overflow:hidden;}
     done=true;
     if(window.__startMusic)window.__startMusic();
     cap.classList.add('done');
-    setTimeout(()=>title.classList.add('show'),250);
+    setTimeout(()=>svg.classList.add('fade'),260);
+    setTimeout(()=>title.classList.add('show'),820);
     setTimeout(()=>{
       box.classList.add('gone');
       document.body.classList.remove('locked');
-    },1500);
-    setTimeout(()=>box.remove(),2600);
+    },2100);
+    setTimeout(()=>box.remove(),3200);
   }
 })();
 </script>
